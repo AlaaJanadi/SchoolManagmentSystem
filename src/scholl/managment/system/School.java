@@ -11,6 +11,8 @@ public class School {
 
     private static School school;
     private String name;
+
+    private String password;
     private List<Teacher> teachers;
     private List<Student> students;
     private double totalMoneyEarned;
@@ -19,11 +21,12 @@ public class School {
     /**
      * private constructor that will set the name of the school.
      * private to prevent making objects out said this class.
-     *
-     * @param name the name of the school
+     * @param name the name of the school.
+     * @param password the password.
      */
-    private School(String name) {
+    private School(String name, String password) {
         this.name = name;
+        this.password = password;
         this.teachers = new ArrayList<>();
         this.students = new ArrayList<>();
         this.totalMoneyEarned = 0;
@@ -34,12 +37,13 @@ public class School {
      * to create an instance of the school (only one object can be created).
      *
      * @param name the name to be set to school name.
+     * @param password the password to be set to school.
      * @return school object.
      */
-    public static School getInstance(String name) {
+    public static School getInstance(String name ,String password) {
 
         if (school == null) {
-            school = new School(name);
+            school = new School(name,password);
         }
         return school;
     }
@@ -88,9 +92,7 @@ public class School {
         teacher.setSalary(newSalary);
     }
 
-    /**
-     * to print a list of all teachers
-     */
+
 
     /**
      * to get all teachers in the school staff.
@@ -99,6 +101,9 @@ public class School {
     public List<Teacher> getTeachers(){
         return teachers;
     }
+    /**
+     * to print a list of all teachers
+     */
     public void printAllTeachers(){
         System.out.println("****** the teachers list ******");
         for(Teacher teacher : teachers){
@@ -127,5 +132,60 @@ public class School {
 
     public void printSchool(){
         System.out.println("****** || " + this.name + " || ******");
+    }
+
+    /**
+     * adds a student .
+     * @param student student object to be added.
+     */
+    public void addStudent(Student student){
+        students.add(student);
+    }
+
+    /**
+     * gets a student with specifics id.
+     * @param id the id of the student.
+     * @return student object.
+     */
+    public Student getStudent(int id){
+        for (Student student : students){
+            if (student.getId() == id){
+                return student;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * updates the student grade.
+     * @param id the id of the student.
+     * @param newGrade the new grade of the student.
+     */
+    public void updateStudentGrade(int id,int newGrade){
+        Student student = getStudent(id);
+        student.setGrade(newGrade);
+    }
+
+    /**
+     * updates the fees that the student has paid.
+     * @param id the id of the student.
+     * @param fees the fees to be added.
+     */
+    public void updateStudentFeesPaid(int id, int fees){
+        Student student = getStudent(id);
+        student.updateFeesPaid(fees);
+    }
+
+    public void deleteStudent(int id){
+        Student student = getStudent(id);
+        students.remove(student);
+    }
+
+    /**
+     * gets all students.
+     * @return list of students.
+     */
+    public List<Student> getStudents(){
+        return  students;
     }
 }
