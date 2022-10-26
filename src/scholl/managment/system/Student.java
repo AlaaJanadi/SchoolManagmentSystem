@@ -16,7 +16,6 @@ public class Student {
      * To Create a new Student by initializing.
      * Fees for every student is $30,000.
      * Fees Paid initially 0.
-     * 
      * @param id    id for the student: unique.
      * @param name  name for the student.
      * @param grade grade of the student.
@@ -58,7 +57,6 @@ public class Student {
 
     /**
      * to get the name of the student.
-     * 
      * @return the name of the student.
      */
     public String getName() {
@@ -67,7 +65,6 @@ public class Student {
 
     /**
      * to get the grade of the student.
-     * 
      * @return the grade of the student.
      */
     public int getGrade() {

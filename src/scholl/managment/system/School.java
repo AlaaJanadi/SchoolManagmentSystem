@@ -2,6 +2,7 @@ package scholl.managment.system;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.prefs.*;
 
 /**
  * Many teachers, many students
@@ -46,6 +47,28 @@ public class School {
             school = new School(name,password);
         }
         return school;
+    }
+    /**
+     * to get the name of the school.
+     * @return the name of the school.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * prints the school name.
+     */
+    public void printSchool(){
+        System.out.println("****** || " + this.name + " || ******");
+    }
+
+    /**
+     * set the password.
+     * @param password the password for the school.
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**
@@ -92,8 +115,6 @@ public class School {
         teacher.setSalary(newSalary);
     }
 
-
-
     /**
      * to get all teachers in the school staff.
      * @return a list of teachers.
@@ -123,19 +144,7 @@ public class School {
     }
 
     /**
-     * to get the name of the school.
-     * @return the name of the school.
-     */
-    public String getName() {
-        return name;
-    }
-
-    public void printSchool(){
-        System.out.println("****** || " + this.name + " || ******");
-    }
-
-    /**
-     * adds a student .
+     * adds a student.
      * @param student student object to be added.
      */
     public void addStudent(Student student){
